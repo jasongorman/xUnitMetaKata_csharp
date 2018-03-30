@@ -12,10 +12,13 @@ The meta- part of this kata is that while you're refactoring the implementation 
 
 The rules are that you can only refactor to eliminate commonly-known "code smells" (see Fowler's Refactoring book/website) and/or when the code breaks one of the following design principles:
 
-K.I.S.S.
-D.R.Y.
-Tell, Don't Ask
-SOLID
+# K.I.S.S.
+
+# D.R.Y.
+
+# Tell, Don't Ask
+
+# SOLID
 
 Keep those test passing as you go, and have fun!
 
