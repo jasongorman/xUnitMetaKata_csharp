@@ -20,7 +20,7 @@ namespace RockPaperScissors.Test
             Console.WriteLine("Round tests...");
 
             // rock blunts scissors
-            int result = new Round().Play("Rock", "Scissors");
+            int result = new Round().Play(Hand.Rock, Hand.Scissors);
             if (result == 1)
             {
                 testsPassed++;
@@ -32,7 +32,7 @@ namespace RockPaperScissors.Test
                 Console.WriteLine("rock blunts scissors (Rock, Scissors): FAIL - expected 1 but was {0}", result);
             }
 
-            result = new Round().Play("Scissors", "Rock");
+            result = new Round().Play(Hand.Scissors, Hand.Rock);
             if (result == 2)
             {
                 testsPassed++;
@@ -45,7 +45,7 @@ namespace RockPaperScissors.Test
             }
 
             // scissors cut paper
-            result = new Round().Play("Scissors", "Paper");
+            result = new Round().Play(Hand.Scissors, Hand.Paper);
             if (result == 1)
             {
                 testsPassed++;
@@ -57,7 +57,7 @@ namespace RockPaperScissors.Test
                 Console.WriteLine("scissors cut paper (Scissors, Paper): FAIL - expected 1 but was {0}", result);
             }
 
-            result = new Round().Play("Paper", "Scissors");
+            result = new Round().Play(Hand.Paper, Hand.Scissors);
             if (result == 2)
             {
                 testsPassed++;
@@ -70,7 +70,7 @@ namespace RockPaperScissors.Test
             }
 
             // paper wraps rock
-            result = new Round().Play("Paper", "Rock");
+            result = new Round().Play(Hand.Paper, Hand.Rock);
             if (result == 1)
             {
                 testsPassed++;
@@ -82,7 +82,7 @@ namespace RockPaperScissors.Test
                 Console.WriteLine("paper wraps rock (Paper, Rock): FAIL - expected 1 but was {0}", result);
             }
 
-            result = new Round().Play("Rock", "Paper");
+            result = new Round().Play(Hand.Rock, Hand.Paper);
             if (result == 2)
             {
                 testsPassed++;
@@ -95,7 +95,7 @@ namespace RockPaperScissors.Test
             }
 
             // round is a draw
-            result = new Round().Play("Rock", "Rock");
+            result = new Round().Play(Hand.Rock, Hand.Rock);
             if (result == 0)
             {
                 testsPassed++;
@@ -107,7 +107,7 @@ namespace RockPaperScissors.Test
                 Console.WriteLine("round is a draw (Rock, Rock): FAIL - expected 0 but was {0}", result);
             }
 
-            result = new Round().Play("Scissors", "Scissors");
+            result = new Round().Play(Hand.Scissors, Hand.Scissors);
             if (result == 0)
             {
                 testsPassed++;
@@ -119,7 +119,7 @@ namespace RockPaperScissors.Test
                 Console.WriteLine("round is a draw (Scissors, Scissors): FAIL - expected 0 but was {0}", result);
             }
 
-            result = new Round().Play("Paper", "Paper");
+            result = new Round().Play(Hand.Paper, Hand.Paper);
             if (result == 0)
             {
                 testsPassed++;
@@ -136,7 +136,7 @@ namespace RockPaperScissors.Test
 
             try
             {
-                new Round().Play("Blah", "Foo");
+                new Round().Play(null, null);
             }
             catch (Exception e)
             {
@@ -160,8 +160,8 @@ namespace RockPaperScissors.Test
             // player 1 wins game
             SpyGameListener listener = new SpyGameListener();
             Game game = new Game(listener);
-            game.PlayRound("Rock", "Scissors");
-            game.PlayRound("Rock", "Scissors");
+            game.PlayRound(Hand.Rock, Hand.Scissors);
+            game.PlayRound(Hand.Rock, Hand.Scissors);
 
             result = listener.Winner;
             if (result == 1)
@@ -178,8 +178,8 @@ namespace RockPaperScissors.Test
             // player 2 wins game
             listener = new SpyGameListener();
             game = new Game(listener);
-            game.PlayRound("Rock", "Paper");
-            game.PlayRound("Rock", "Paper");
+            game.PlayRound(Hand.Rock, Hand.Paper);
+            game.PlayRound(Hand.Rock, Hand.Paper);
 
             result = listener.Winner;
             if (result == 2)
@@ -196,8 +196,8 @@ namespace RockPaperScissors.Test
             // drawers not counted
             listener = new SpyGameListener();
             game = new Game(listener);
-            game.PlayRound("Rock", "Rock");
-            game.PlayRound("Rock", "Rock");
+            game.PlayRound(Hand.Rock, Hand.Rock);
+            game.PlayRound(Hand.Rock, Hand.Rock);
 
             result = listener.Winner;
             if (result == 0)
@@ -216,8 +216,8 @@ namespace RockPaperScissors.Test
             game = new Game(listener);
             try
             {
-                game.PlayRound("Blah", "Foo");
-                game.PlayRound("Rock", "Scissors");
+                game.PlayRound(null, null);
+                game.PlayRound(Hand.Rock, Hand.Scissors);
             }
             catch (Exception e)
             {

@@ -17,9 +17,9 @@ namespace RockPaperScissors
             _listener = listener;
         }
 
-        public void PlayRound(string player1, string player2)
+        public void PlayRound(Hand player1Hand, Hand player2Hand)
         {
-            int result = new Round().Play(player1, player2);
+            int result = new Round().Play(player1Hand, player2Hand);
             if (result == 1) _player1Score++;
             if (result == 2) _player2Score++;
 

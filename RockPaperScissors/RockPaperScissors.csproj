@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="Hand.cs" />
     <Compile Include="IGameListener.cs" />
     <Compile Include="InvalidMoveException.cs" />
     <Compile Include="Round.cs" />
