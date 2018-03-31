@@ -5,18 +5,6 @@ namespace RockPaperScissors.Test
 {
     public class RoundTests
     {
-        private readonly TestRunner _testRunner;
-
-        public RoundTests()
-        {
-            _testRunner = new TestRunner(this);
-        }
-
-        public TestRunner TestRunner
-        {
-            get { return _testRunner; }
-        }
-
         public void TestInvalidInputsNotAllowed()
         {
             Assert.Throws(() => new Round().Play(null, null), typeof(InvalidMoveException), "invalid inputs not allowed");
@@ -24,14 +12,26 @@ namespace RockPaperScissors.Test
 
         public void TestRoundIsADraw()
         {
-            int result = new Round().Play(Hand.Rock, Hand.Rock);
-            Assert.Equals(0, result, "round is a draw (Rock, Rock)");
+            foreach (Hand hand in DataFor_TestRoundIsADraw())
+            {
+                CheckForDrawer(hand);
+            }
+        }
 
-            result = new Round().Play(Hand.Scissors, Hand.Scissors);
-            Assert.Equals(0, result, "round is a draw (Scissors, Scissors)");
+        private object[] DataFor_TestRoundIsADraw()
+        {
+            return new object[]
+            {
+                Hand.Rock,
+                Hand.Scissors,
+                Hand.Paper
+            };
+        }
 
-            result = new Round().Play(Hand.Paper, Hand.Paper);
-            Assert.Equals(0, result, "round is a draw (Paper, Paper)");
+        private void CheckForDrawer(Hand player1)
+        {
+            int result = new Round().Play(player1, player1);
+            Assert.Equals(0, result, string.Format("round is a draw ({0})", player1.ToString()));
         }
 
         public void TestPaperWrapsRock()
