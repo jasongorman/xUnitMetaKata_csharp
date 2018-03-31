@@ -1,26 +1,28 @@
 using System;
+using System.Reflection;
 
 namespace RockPaperScissors.Test
 {
-    internal class RoundTests
+    public class RoundTests
     {
-        internal void RunAll()
-        {
-            Console.WriteLine("Round tests...");
+        private readonly TestRunner _testRunner;
 
-            TestRockBluntsScissors();
-            TestScissorsCutPaper();
-            TestPaperWrapsRock();
-            TestRoundIsADraw();
-            TestInvalidInputsNotAllowed();
+        public RoundTests()
+        {
+            _testRunner = new TestRunner(this);
         }
 
-        private void TestInvalidInputsNotAllowed()
+        public TestRunner TestRunner
+        {
+            get { return _testRunner; }
+        }
+
+        public void TestInvalidInputsNotAllowed()
         {
             Assert.Throws(() => new Round().Play(null, null), typeof(InvalidMoveException), "invalid inputs not allowed");
         }
 
-        private void TestRoundIsADraw()
+        public void TestRoundIsADraw()
         {
             int result = new Round().Play(Hand.Rock, Hand.Rock);
             Assert.Equals(0, result, "round is a draw (Rock, Rock)");
@@ -32,7 +34,7 @@ namespace RockPaperScissors.Test
             Assert.Equals(0, result, "round is a draw (Paper, Paper)");
         }
 
-        private void TestPaperWrapsRock()
+        public void TestPaperWrapsRock()
         {
             int result = new Round().Play(Hand.Paper, Hand.Rock);
             Assert.Equals(1, result, "paper wraps rock (Paper, Rock)");
@@ -41,7 +43,7 @@ namespace RockPaperScissors.Test
             Assert.Equals(2, result, "paper wraps rock (Rock, Paper)");
         }
 
-        private void TestScissorsCutPaper()
+        public void TestScissorsCutPaper()
         {
             int result = new Round().Play(Hand.Scissors, Hand.Paper);
             Assert.Equals(1, result, "scissors cut paper (Scissors, Paper)");
@@ -50,7 +52,7 @@ namespace RockPaperScissors.Test
             Assert.Equals(2, result, "scissors cut paper (Paper, Scissors)");
         }
 
-        private void TestRockBluntsScissors()
+        public void TestRockBluntsScissors()
         {
             int result = new Round().Play(Hand.Rock, Hand.Scissors);
             Assert.Equals(1, result, "rock blunts scissors (Rock, Scissors)");

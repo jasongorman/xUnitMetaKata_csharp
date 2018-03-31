@@ -15,10 +15,8 @@ namespace RockPaperScissors.Test
             // output header
             Console.WriteLine("Running RockPaperScissors tests...");
 
-            new RoundTests().RunAll();
-
-            new GameTests().RunAll();
-
+            new TestRunner(new RoundTests()).RunAll();
+            new TestRunner(new GameTests()).RunAll();
 
             Console.WriteLine("Tests run: {0}  Passed: {1}  Failed: {2}", _testsPassed + _testsFailed, _testsPassed, _testsFailed);
         }
