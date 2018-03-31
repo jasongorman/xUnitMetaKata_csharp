@@ -4,13 +4,6 @@ namespace RockPaperScissors.Test
 {
     internal class GameTests
     {
-        private readonly TestSuite _testSuite;
-
-        public GameTests(TestSuite testSuite)
-        {
-            _testSuite = testSuite;
-        }
-
         public void RunAll()
         {
 // Game tests
