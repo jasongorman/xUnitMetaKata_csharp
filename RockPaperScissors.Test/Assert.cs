@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors.Test
 {
-    class Assert
+    abstract class Assert
     {
         public static TestSuite TestSuite { get; set; }
 
