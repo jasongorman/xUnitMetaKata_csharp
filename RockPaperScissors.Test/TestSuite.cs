@@ -15,7 +15,7 @@ namespace RockPaperScissors.Test
             // output header
             Console.WriteLine("Running RockPaperScissors tests...");
 
-            new RoundTests(this).RunAll();
+            new RoundTests().RunAll();
 
             new GameTests(this).RunAll();
 

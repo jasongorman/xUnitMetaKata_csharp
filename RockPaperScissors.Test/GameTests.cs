@@ -23,16 +23,7 @@ namespace RockPaperScissors.Test
             game.PlayRound(Hand.Rock, Hand.Scissors);
 
             int result = listener.Winner;
-            if (result == 1)
-            {
-                _testSuite.AddTestPassed();
-                Console.WriteLine("player 1 wins game: PASS");
-            }
-            else
-            {
-                _testSuite.AddTestFailed();
-                Console.WriteLine("player 1 wins game: FAIL - expected 1 but was {0}", result);
-            }
+            Assert.Equals(1, result, "player 1 wins game");
 
             // player 2 wins game
             listener = new SpyGameListener();
@@ -41,16 +32,7 @@ namespace RockPaperScissors.Test
             game.PlayRound(Hand.Rock, Hand.Paper);
 
             result = listener.Winner;
-            if (result == 2)
-            {
-                _testSuite.AddTestPassed();
-                Console.WriteLine("player 2 wins game: PASS");
-            }
-            else
-            {
-                _testSuite.AddTestFailed();
-                Console.WriteLine("player 2 wins game: FAIL - expected 2 but was {0}", result);
-            }
+            Assert.Equals(2, result, "player 2 wins game");
 
             // drawers not counted
             listener = new SpyGameListener();
@@ -59,16 +41,7 @@ namespace RockPaperScissors.Test
             game.PlayRound(Hand.Rock, Hand.Rock);
 
             result = listener.Winner;
-            if (result == 0)
-            {
-                _testSuite.AddTestPassed();
-                Console.WriteLine("drawers not counted: PASS");
-            }
-            else
-            {
-                _testSuite.AddTestFailed();
-                Console.WriteLine("drawers not counted: FAIL - expected 0 but was {0}", result);
-            }
+            Assert.Equals(0, result, "drawers not counted");
 
             //invalid moves not counted
             listener = new SpyGameListener();
@@ -83,16 +56,7 @@ namespace RockPaperScissors.Test
             }
 
             result = listener.Winner;
-            if (result == 0)
-            {
-                _testSuite.AddTestPassed();
-                Console.WriteLine("invalid moves not counted: PASS");
-            }
-            else
-            {
-                _testSuite.AddTestFailed();
-                Console.WriteLine("invalid moves not counted: FAIL - expected 0 but was {0}", result);
-            }
+            Assert.Equals(0, result, "invalid moves not counted");
         }
     }
 }
