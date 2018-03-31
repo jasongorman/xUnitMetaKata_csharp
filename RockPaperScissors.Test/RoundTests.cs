@@ -24,69 +24,49 @@ namespace RockPaperScissors.Test
 
         private void TestInvalidInputsNotAllowed()
         {
-            Exception exception = null;
-
-            try
-            {
-                new Round().Play(null, null);
-            }
-            catch (Exception e)
-            {
-                exception = e;
-            }
-
-            if (exception is InvalidMoveException)
-            {
-                _testSuite.AddTestPassed();
-                Console.WriteLine("invalid inputs not allowed: PASS");
-            }
-            else
-            {
-                _testSuite.AddTestFailed();
-                Console.WriteLine("invalid inputs not allowed: FAIL - expected InvalidMoveException");
-            }
+            AssertThrows(() => new Round().Play(null, null), typeof(InvalidMoveException), "invalid inputs not allowed");
         }
 
         private void TestRoundIsADraw()
         {
             int result = new Round().Play(Hand.Rock, Hand.Rock);
-            AssertEquals(result, 0, "round is a draw (Rock, Rock)");
+            AssertEquals(0, result, "round is a draw (Rock, Rock)");
 
             result = new Round().Play(Hand.Scissors, Hand.Scissors);
-            AssertEquals(result, 0, "round is a draw (Scissors, Scissors)");
+            AssertEquals(0, result, "round is a draw (Scissors, Scissors)");
 
             result = new Round().Play(Hand.Paper, Hand.Paper);
-            AssertEquals(result, 0, "round is a draw (Paper, Paper)");
+            AssertEquals(0, result, "round is a draw (Paper, Paper)");
         }
 
         private void TestPaperWrapsRock()
         {
             int result = new Round().Play(Hand.Paper, Hand.Rock);
-            AssertEquals(result, 1, "paper wraps rock (Paper, Rock)");
+            AssertEquals(1, result, "paper wraps rock (Paper, Rock)");
 
             result = new Round().Play(Hand.Rock, Hand.Paper);
-            AssertEquals(result, 2, "paper wraps rock (Rock, Paper)");
+            AssertEquals(2, result, "paper wraps rock (Rock, Paper)");
         }
 
         private void TestScissorsCutPaper()
         {
             int result = new Round().Play(Hand.Scissors, Hand.Paper);
-            AssertEquals(result, 1, "scissors cut paper (Scissors, Paper)");
+            AssertEquals(1, result, "scissors cut paper (Scissors, Paper)");
 
             result = new Round().Play(Hand.Paper, Hand.Scissors);
-            AssertEquals(result, 2, "scissors cut paper (Paper, Scissors)");
+            AssertEquals(2, result, "scissors cut paper (Paper, Scissors)");
         }
 
         private void TestRockBluntsScissors()
         {
             int result = new Round().Play(Hand.Rock, Hand.Scissors);
-            AssertEquals(result, 1, "rock blunts scissors (Rock, Scissors)");
+            AssertEquals(1, result, "rock blunts scissors (Rock, Scissors)");
 
             result = new Round().Play(Hand.Scissors, Hand.Rock);
-            AssertEquals(result, 2, "rock blunts scissors (Scissors, Rock)");
+            AssertEquals(2, result, "rock blunts scissors (Scissors, Rock)");
         }
 
-        private void AssertEquals(int result, int expected, string displayName)
+        private void AssertEquals(int expected, int result, string displayName)
         {
             if (result.Equals(expected))
             {
@@ -97,6 +77,31 @@ namespace RockPaperScissors.Test
             {
                 _testSuite.AddTestFailed();
                 Console.WriteLine(string.Format("{0}: FAIL - expected {1} but was {2}", displayName, expected, result));
+            }
+        }
+
+        private void AssertThrows(Action t, Type expectedException, string displayName)
+        {
+            Exception exception = null;
+
+            try
+            {
+                t.Invoke();
+            }
+            catch (Exception e)
+            {
+                exception = e;
+            }
+
+            if (exception != null && exception.GetType() == expectedException)
+            {
+                _testSuite.AddTestPassed();
+                Console.WriteLine(string.Format("{0}: PASS", displayName));
+            }
+            else
+            {
+                _testSuite.AddTestFailed();
+                Console.WriteLine(string.Format("{0}: FAIL - expected {1}", displayName, expectedException.Name));
             }
         }
     }
