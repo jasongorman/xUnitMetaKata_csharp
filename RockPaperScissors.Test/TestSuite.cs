@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 namespace RockPaperScissors.Test
 {
@@ -15,8 +16,13 @@ namespace RockPaperScissors.Test
             // output header
             Console.WriteLine("Running RockPaperScissors tests...");
 
-            new TestRunner(new RoundTests()).RunAll();
-            new TestRunner(new GameTests()).RunAll();
+            foreach (Type type in Assembly.GetExecutingAssembly().ExportedTypes)
+            {
+                if (type.Name.EndsWith("Tests"))
+                {
+                    new TestRunner(Activator.CreateInstance(type)).RunAll();
+                }
+            }
 
             Console.WriteLine("Tests run: {0}  Passed: {1}  Failed: {2}", _testsPassed + _testsFailed, _testsPassed, _testsFailed);
         }
