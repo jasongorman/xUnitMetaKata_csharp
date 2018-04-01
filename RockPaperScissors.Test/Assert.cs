@@ -14,13 +14,11 @@ namespace RockPaperScissors.Test
         {
             if (result.Equals(expected))
             {
-                TestSuite.AddTestPassed();
-                Console.WriteLine(String.Format("{0}: PASS", displayName));
+                TestSuite.TestPassed(displayName);
             }
             else
             {
-                TestSuite.AddTestFailed();
-                Console.WriteLine(String.Format("{0}: FAIL - expected {1} but was {2}", displayName, expected, result));
+                TestSuite.TestFailed(displayName, expected, result);
             }
         }
 
@@ -39,13 +37,11 @@ namespace RockPaperScissors.Test
 
             if (exception != null && exception.GetType() == expectedException)
             {
-                TestSuite.AddTestPassed();
-                Console.WriteLine(String.Format("{0}: PASS", displayName));
+                TestSuite.TestPassed(displayName);
             }
             else
             {
-                TestSuite.AddTestFailed();
-                Console.WriteLine(String.Format("{0}: FAIL - expected {1}", displayName, expectedException.Name));
+                TestSuite.TestFailed(displayName, expectedException);
             }
         }
     }

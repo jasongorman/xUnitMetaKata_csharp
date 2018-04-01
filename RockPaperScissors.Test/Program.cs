@@ -9,7 +9,7 @@ namespace RockPaperScissors.Test
     {
         static void Main(string[] args)
         {
-            var testSuite = new TestSuite();
+            var testSuite = new TestSuite(new ConsoleOutput());
             Assert.TestSuite = testSuite;
             testSuite.RunAll();
         }
