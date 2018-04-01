@@ -1,7 +1,6 @@
-using System;
 using System.Reflection;
 
-namespace RockPaperScissors.Test
+namespace JasonUnit.Framework
 {
     public class TestRunner
     {
@@ -15,7 +14,7 @@ namespace RockPaperScissors.Test
         internal void RunAll()
         {
             var fixtureName = _fixture.GetType().Name.Replace("Tests", "");
-            Console.WriteLine(string.Format("{0} tests...", fixtureName));
+            System.Console.WriteLine(string.Format("{0} tests...", fixtureName));
             foreach (MethodInfo method in _fixture.GetType().GetMethods())
             {
                 if (IsTest(method))

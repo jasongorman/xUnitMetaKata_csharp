@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{15FBAAEA-AFB2-4C87-A43D-73DC2A48A8FB}</ProjectGuid>
+    <ProjectGuid>{BE690A58-73C3-40EF-BBCF-38D80AAAE169}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RockPaperScissors.Test</RootNamespace>
-    <AssemblyName>RockPaperScissors.Test</AssemblyName>
+    <RootNamespace>JasonUnit.Framework</RootNamespace>
+    <AssemblyName>JasonUnit.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,23 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameTests.cs" />
+    <Compile Include="Assert.cs" />
+    <Compile Include="IOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoundTests.cs" />
-    <Compile Include="SpyGameListener.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JasonUnit.Framework\JasonUnit.Framework.csproj">
-      <Project>{BE690A58-73C3-40EF-BBCF-38D80AAAE169}</Project>
-      <Name>JasonUnit.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RockPaperScissors\RockPaperScissors.csproj">
-      <Project>{22a06f68-7db1-49b1-9690-c848e46ca670}</Project>
-      <Name>RockPaperScissors</Name>
-    </ProjectReference>
+    <Compile Include="TestRunner.cs" />
+    <Compile Include="TestSuite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

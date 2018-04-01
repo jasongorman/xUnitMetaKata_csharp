@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockPaperScissors", "RockPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockPaperScissors.Test", "RockPaperScissors.Test\RockPaperScissors.Test.csproj", "{15FBAAEA-AFB2-4C87-A43D-73DC2A48A8FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JasonUnit.Console", "JasonUnit.Console\JasonUnit.Console.csproj", "{B2E18FD1-646A-44EF-84FC-6C86664DCB01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JasonUnit.Framework", "JasonUnit.Framework\JasonUnit.Framework.csproj", "{BE690A58-73C3-40EF-BBCF-38D80AAAE169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{15FBAAEA-AFB2-4C87-A43D-73DC2A48A8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15FBAAEA-AFB2-4C87-A43D-73DC2A48A8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15FBAAEA-AFB2-4C87-A43D-73DC2A48A8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E18FD1-646A-44EF-84FC-6C86664DCB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E18FD1-646A-44EF-84FC-6C86664DCB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E18FD1-646A-44EF-84FC-6C86664DCB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E18FD1-646A-44EF-84FC-6C86664DCB01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE690A58-73C3-40EF-BBCF-38D80AAAE169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE690A58-73C3-40EF-BBCF-38D80AAAE169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE690A58-73C3-40EF-BBCF-38D80AAAE169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE690A58-73C3-40EF-BBCF-38D80AAAE169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

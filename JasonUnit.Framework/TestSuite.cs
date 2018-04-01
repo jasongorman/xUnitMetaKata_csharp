@@ -2,31 +2,33 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace RockPaperScissors.Test
+namespace JasonUnit.Framework
 {
-    internal class TestSuite
+    public class TestSuite
     {
         private int _testsPassed;
         private int _testsFailed;
         private readonly IOutput _output;
+        private readonly Assembly _testAssembly;
 
-        public TestSuite(IOutput output)
+        public TestSuite(IOutput output, Assembly testAssembly)
         {
             _output = output;
+            _testAssembly = testAssembly;
             _testsPassed = 0;
             _testsFailed = 0;
         }
 
         public void RunAll()
         {
-            _output.WriteHeader(Assembly.GetExecutingAssembly().GetName().Name.Replace(@".Test", ""));
+            _output.WriteHeader(_testAssembly.GetName().Name.Replace(@".Test", ""));
             RunTestFixtures();
             _output.WriteSummary(_testsPassed, _testsFailed);
         }
 
         private void RunTestFixtures()
         {
-            foreach (var type in Assembly.GetExecutingAssembly().ExportedTypes.Where(IsFixture))
+            foreach (var type in _testAssembly.ExportedTypes.Where(IsFixture))
             {
                 new TestRunner(Activator.CreateInstance(type)).RunAll();
             }
@@ -40,7 +42,7 @@ namespace RockPaperScissors.Test
         public void TestFailed(string displayName, object expected, object result)
         {
             _testsFailed++;
-            new ConsoleOutput().WriteTestFailed(expected, result, displayName);
+            _output.WriteTestFailed(expected, result, displayName);
         }
 
         public void TestPassed(string displayName)

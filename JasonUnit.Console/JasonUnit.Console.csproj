@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{15FBAAEA-AFB2-4C87-A43D-73DC2A48A8FB}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{B2E18FD1-646A-44EF-84FC-6C86664DCB01}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RockPaperScissors.Test</RootNamespace>
-    <AssemblyName>RockPaperScissors.Test</AssemblyName>
+    <RootNamespace>JasonUnit.Console</RootNamespace>
+    <AssemblyName>JasonUnit.Console</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,22 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameTests.cs" />
+    <Compile Include="ConsoleOutput.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoundTests.cs" />
-    <Compile Include="SpyGameListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JasonUnit.Framework\JasonUnit.Framework.csproj">
-      <Project>{BE690A58-73C3-40EF-BBCF-38D80AAAE169}</Project>
+      <Project>{be690a58-73c3-40ef-bbcf-38d80aaae169}</Project>
       <Name>JasonUnit.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RockPaperScissors\RockPaperScissors.csproj">
-      <Project>{22a06f68-7db1-49b1-9690-c848e46ca670}</Project>
-      <Name>RockPaperScissors</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,12 +1,13 @@
 using System;
 
-namespace RockPaperScissors.Test
+namespace JasonUnit.Framework
 {
-    internal interface IOutput
+    public interface IOutput
     {
         void WriteSummary(int testsPassed, int testsFailed);
         void WriteHeader(string assemblyName);
         void WriteTestPassed(string displayName);
         void WriteTestFailed(Type expectedException, string displayName);
+        void WriteTestFailed(object expected, object result, string displayName);
     }
 }

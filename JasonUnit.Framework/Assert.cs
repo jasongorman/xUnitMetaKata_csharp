@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RockPaperScissors.Test
+namespace JasonUnit.Framework
 {
-    abstract class Assert
+    public abstract class Assert
     {
         public static TestSuite TestSuite { get; set; }
 
